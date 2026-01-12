@@ -13,73 +13,144 @@ import LiveFeed from './LiveFeed';
 // 1. Blogs View
 const BlogsView = () => {
     const articles = [
-        { id: 1, title: 'The Future of AI in 2026', niche: 'Technology', words: 2400, status: 'Published', date: 'Oct 24, 2025' },
-        { id: 2, title: '10 Minimalist Home Decor Tips', niche: 'Lifestyle', words: 1800, status: 'Published', date: 'Oct 23, 2025' },
-        { id: 3, title: 'Crypto Market Analysis Q4', niche: 'Finance', words: 3200, status: 'Draft', date: 'Oct 22, 2025' },
-        { id: 4, title: 'Best Vegan Recipes for Beginners', niche: 'Health', words: 1500, status: 'Indexing', date: 'Oct 21, 2025' },
-        { id: 5, title: 'Guide to Remote Work Productivity', niche: 'Business', words: 2100, status: 'Published', date: 'Oct 20, 2025' },
-        { id: 6, title: 'Understanding React Server Components', niche: 'Dev', words: 2800, status: 'Published', date: 'Oct 19, 2025' },
+        {
+            id: 1,
+            title: 'The Future of AI in 2026: Trends You Can Not Ignore',
+            snippet: 'Artificial Intelligence is evolving rapidly. From generative models to autonomous agents, discover the key trends defining 2026 and how they impact your industry.',
+            niche: 'Technology',
+            status: 'Published',
+            date: 'Just now',
+            readTime: '6 min',
+            badge: 'Just Published',
+            badgeColor: 'text-green-500 bg-green-500/10'
+        },
+        {
+            id: 2,
+            title: '10 Minimalist Home Decor Tips for a Clutter-Free Life',
+            snippet: 'Transform your living space with these essential minimalist principles. Learn how to declutter, choose the right color palette, and select functional furniture.',
+            niche: 'Lifestyle',
+            status: 'New',
+            date: '7 min',
+            readTime: '5 min',
+            badge: 'New',
+            badgeColor: 'text-yellow-500 bg-yellow-500/10'
+        },
+        {
+            id: 3,
+            title: 'Crypto Market Analysis Q4: Bull Run or Correction?',
+            snippet: 'A deep dive into the current state of the cryptocurrency market. We analyze Bitcoin\'s halving effects, Ethereum\'s upgrades, and emerging altcoins.',
+            niche: 'Finance',
+            status: 'Draft',
+            date: '2 hrs ago',
+            readTime: '8 min',
+            badge: 'Draft',
+            badgeColor: 'text-gray-400 bg-gray-700/50'
+        },
+        {
+            id: 4,
+            title: 'Complete Guide to Plant-Based Nutrition for Athletes',
+            snippet: 'Can you build muscle on a vegan diet? Absolutely. Here is your comprehensive guide to protein sources, meal timing, and recovery supplements.',
+            niche: 'Health',
+            status: 'New',
+            date: 'Just now',
+            readTime: '12 min',
+            badge: 'New',
+            badgeColor: 'text-yellow-500 bg-yellow-500/10'
+        },
+        {
+            id: 5,
+            title: 'Remote Work Productivity: The Ultimate Handbook',
+            snippet: 'Master the art of working from home. We cover time blocking, setting up an ergonomic workspace, and maintaining work-life balance.',
+            niche: 'Business',
+            status: 'Published',
+            date: '1 day ago',
+            readTime: '15 min',
+            badge: 'Evergreen',
+            badgeColor: 'text-blue-500 bg-blue-500/10'
+        },
+        {
+            id: 6,
+            title: 'Understanding React Server Components in 2026',
+            snippet: 'Server Components have changed the way we build web apps. Learn the difference between RSC and SSR, and when to use each for maximum performance.',
+            niche: 'Dev',
+            status: 'Published',
+            date: '2 days ago',
+            readTime: '10 min',
+            badge: 'Tech',
+            badgeColor: 'text-purple-500 bg-purple-500/10'
+        },
     ];
 
     return (
-        <div className="space-y-6">
-            <div className="flex justify-between items-center mb-6">
-                <h2 className="text-2xl font-bold text-white">Your Articles</h2>
-                <div className="flex gap-3">
-                    <button className="flex items-center gap-2 px-4 py-2 bg-gray-800 rounded-lg text-sm hover:bg-gray-700 transition-colors">
-                        <Filter size={16} /> Filter
-                    </button>
-                    <button className="flex items-center gap-2 px-4 py-2 bg-brand-orange text-white rounded-lg text-sm hover:bg-orange-600 transition-colors shadow-lg shadow-orange-500/20">
-                        <Plus size={16} /> New Article
-                    </button>
+        <div className="space-y-8">
+            {/* Stats Header Bar */}
+            <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl">
+                <div className="flex items-center gap-12">
+                    <div>
+                        <div className="text-4xl font-bold text-white tracking-tight">11,971</div>
+                        <div className="text-xs font-bold text-gray-500 uppercase tracking-wider mt-1">Total Articles</div>
+                    </div>
+                    <div>
+                        <div className="text-4xl font-bold text-green-500 tracking-tight">8,542</div>
+                        <div className="text-xs font-bold text-gray-500 uppercase tracking-wider mt-1">Published Today</div>
+                    </div>
+                </div>
+                <div className="flex items-center gap-2 px-3 py-1.5 bg-green-900/20 rounded-full border border-green-900/30">
+                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                    <span className="text-green-500 text-xs font-bold">Auto-updating every 30s</span>
                 </div>
             </div>
 
-            <div className="bg-gray-900/40 border border-gray-800 rounded-2xl overflow-hidden backdrop-blur-sm">
-                <table className="w-full text-left">
-                    <thead className="bg-gray-800/50 text-gray-400 text-xs uppercase tracking-wider">
-                        <tr>
-                            <th className="px-6 py-4 font-medium">Article Title</th>
-                            <th className="px-6 py-4 font-medium">Niche</th>
-                            <th className="px-6 py-4 font-medium">Word Count</th>
-                            <th className="px-6 py-4 font-medium">Status</th>
-                            <th className="px-6 py-4 font-medium">Date Created</th>
-                            <th className="px-6 py-4 font-medium text-right">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody className="divide-y divide-gray-800">
-                        {articles.map((article) => (
-                            <tr key={article.id} className="hover:bg-gray-800/30 transition-colors">
-                                <td className="px-6 py-4">
-                                    <div className="font-medium text-white">{article.title}</div>
-                                </td>
-                                <td className="px-6 py-4">
-                                    <span className="px-2 py-1 bg-gray-800 rounded text-xs text-gray-300">{article.niche}</span>
-                                </td>
-                                <td className="px-6 py-4 text-gray-400 text-sm">{article.words.toLocaleString()}</td>
-                                <td className="px-6 py-4">
-                                    <span className={`px-2 py-1 rounded-full text-xs font-bold flex items-center w-fit gap-1 ${article.status === 'Published' ? 'bg-green-500/10 text-green-500' :
-                                            article.status === 'Draft' ? 'bg-gray-500/10 text-gray-400' :
-                                                'bg-blue-500/10 text-blue-500'
-                                        }`}>
-                                        {article.status === 'Published' && <CheckCircle2 size={10} />}
-                                        {article.status === 'Indexing' && <RefreshCw size={10} className="animate-spin" />}
-                                        {article.status}
-                                    </span>
-                                </td>
-                                <td className="px-6 py-4 text-gray-400 text-sm">{article.date}</td>
-                                <td className="px-6 py-4 text-right">
-                                    <button className="p-2 hover:bg-gray-700 rounded-lg text-gray-400 hover:text-white transition-colors">
-                                        <MoreVertical size={16} />
-                                    </button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-                <div className="p-4 border-t border-gray-800 text-center text-sm text-gray-500 hover:text-gray-300 cursor-pointer transition-colors">
-                    View all 1,240 articles
-                </div>
+            {/* Controls */}
+            <div className="flex justify-end gap-3">
+                <button className="flex items-center gap-2 px-4 py-2 bg-gray-900 border border-gray-800 rounded-lg text-sm text-gray-300 hover:text-white transition-colors">
+                    <Filter size={16} /> Filter
+                </button>
+                <button className="flex items-center gap-2 px-4 py-2 bg-brand-orange text-white rounded-lg text-sm font-bold hover:bg-orange-600 transition-colors shadow-lg shadow-orange-500/20">
+                    <Plus size={16} /> Create New
+                </button>
+            </div>
+
+            {/* Grid Layout */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {articles.map((article) => (
+                    <div key={article.id} className="group relative bg-gray-900/40 border border-gray-800 hover:border-brand-orange/30 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-brand-orange/5 flex flex-col h-full">
+                        {/* Top Colored Line */}
+                        <div className={`absolute top-0 left-0 w-full h-1 rounded-t-2xl ${article.status === 'Draft' ? 'bg-gray-700' : 'bg-gradient-to-r from-brand-orange to-orange-400'
+                            }`}></div>
+
+                        <div className="flex justify-between items-start mb-4">
+                            <span className={`px-2 py-1 rounded-md text-[10px] uppercase font-bold tracking-wider ${article.badgeColor}`}>
+                                {article.badge}
+                            </span>
+                            <span className="text-xs text-gray-500 font-medium">{article.date}</span>
+                        </div>
+
+                        <h3 className="text-xl font-bold text-white leading-tight mb-3 group-hover:text-brand-orange transition-colors">
+                            {article.title}
+                        </h3>
+
+                        <p className="text-sm text-gray-400 leading-relaxed mb-6 line-clamp-3">
+                            {article.snippet}
+                        </p>
+
+                        <div className="mt-auto pt-4 border-t border-gray-800 flex items-center justify-between">
+                            <div className="bg-gray-800/50 px-3 py-1.5 rounded-lg text-xs font-medium text-gray-300 border border-gray-700/50">
+                                {article.niche}
+                            </div>
+                            <div className="flex items-center gap-1.5 text-xs text-gray-500">
+                                <Clock size={14} />
+                                {article.readTime}
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            <div className="text-center pt-8">
+                <button className="text-sm text-gray-500 hover:text-brand-orange transition-colors flex items-center justify-center gap-2 mx-auto">
+                    Load More Articles <ArrowUpRight size={14} />
+                </button>
             </div>
         </div>
     );
@@ -132,8 +203,8 @@ const RealTimeFeedView = () => {
                                 <span className="text-xs font-mono text-gray-500 w-20">{event.time}</span>
 
                                 <div className={`w-24 px-2 py-1 rounded text-xs font-bold text-center border ${event.action === 'Published' ? 'bg-green-500/10 text-green-500 border-green-500/20' :
-                                        event.action === 'Indexing' ? 'bg-blue-500/10 text-blue-500 border-blue-500/20' :
-                                            'bg-gray-700/30 text-gray-400 border-gray-700'
+                                    event.action === 'Indexing' ? 'bg-blue-500/10 text-blue-500 border-blue-500/20' :
+                                        'bg-gray-700/30 text-gray-400 border-gray-700'
                                     }`}>
                                     {event.action}
                                 </div>
@@ -199,8 +270,8 @@ const SettingsView = () => {
                                 </div>
                             </div>
                             <button className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${platform.status === 'Connected'
-                                    ? 'bg-green-500/10 text-green-500 border border-green-500/20'
-                                    : 'bg-white text-gray-900 hover:bg-gray-100'
+                                ? 'bg-green-500/10 text-green-500 border border-green-500/20'
+                                : 'bg-white text-gray-900 hover:bg-gray-100'
                                 }`}>
                                 {platform.status}
                             </button>
@@ -335,8 +406,8 @@ export default function Dashboard({ onLogout }: { onLogout: () => void }) {
                                         </div>
                                     </div>
                                     <span className={`text-[10px] px-2 py-1 rounded-full font-bold ${item.status === 'Published' ? 'bg-green-500/10 text-green-500' :
-                                            item.status === 'Indexing' ? 'bg-blue-500/10 text-blue-500' :
-                                                'bg-gray-500/10 text-gray-500'
+                                        item.status === 'Indexing' ? 'bg-blue-500/10 text-blue-500' :
+                                            'bg-gray-500/10 text-gray-500'
                                         }`}>
                                         {item.status}
                                     </span>
@@ -372,8 +443,8 @@ export default function Dashboard({ onLogout }: { onLogout: () => void }) {
                             key={item.name}
                             onClick={() => setActiveTab(item.name)}
                             className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 ${activeTab === item.name
-                                    ? 'bg-brand-orange text-white shadow-lg shadow-orange-500/20'
-                                    : 'text-gray-400 hover:bg-white/5 hover:text-white'
+                                ? 'bg-brand-orange text-white shadow-lg shadow-orange-500/20'
+                                : 'text-gray-400 hover:bg-white/5 hover:text-white'
                                 }`}
                         >
                             <item.icon size={20} />
