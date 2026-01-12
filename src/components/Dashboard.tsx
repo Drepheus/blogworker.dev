@@ -382,6 +382,64 @@ export default function Dashboard({ onLogout }: { onLogout: () => void }) {
                             ))}
                         </div>
                     </div>
+
+                    {/* Topic Pipeline & System Health */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {/* Pipeline Status */}
+                        <div className="bg-gray-900/40 border border-gray-800 rounded-2xl p-6 backdrop-blur-sm">
+                            <h3 className="font-bold text-sm text-gray-400 uppercase tracking-wider mb-6">Topic Pipeline</h3>
+                            <div className="space-y-5">
+                                {[
+                                    { label: 'Pending', count: 124, color: 'bg-yellow-500', width: '40%' },
+                                    { label: 'Processing', count: 5, color: 'bg-blue-500', width: '15%' },
+                                    { label: 'Completed', count: 8542, color: 'bg-green-500', width: '90%' },
+                                    { label: 'Failed', count: 12, color: 'bg-red-500', width: '5%' },
+                                ].map((item) => (
+                                    <div key={item.label}>
+                                        <div className="flex justify-between text-sm mb-2">
+                                            <span className="text-white font-medium">{item.label}</span>
+                                            <span className="text-gray-400 font-mono">{item.count}</span>
+                                        </div>
+                                        <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
+                                            <motion.div
+                                                initial={{ width: 0 }}
+                                                whileInView={{ width: item.width }}
+                                                transition={{ duration: 1, ease: "easeOut" }}
+                                                className={`h-full ${item.color} shadow-[0_0_10px_rgba(0,0,0,0.5)]`}
+                                            />
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Platform Health */}
+                        <div className="bg-gray-900/40 border border-gray-800 rounded-2xl p-6 backdrop-blur-sm flex flex-col justify-between">
+                            <h3 className="font-bold text-sm text-gray-400 uppercase tracking-wider mb-6">System Health</h3>
+                            <div className="grid grid-cols-2 gap-4 h-full">
+                                <div className="p-4 bg-gray-800/30 rounded-xl border border-gray-800 flex flex-col justify-center hover:bg-gray-800/50 transition-colors">
+                                    <div className="text-green-400 mb-2"><Zap size={24} /></div>
+                                    <div className="text-2xl font-bold text-white">42ms</div>
+                                    <div className="text-xs text-gray-500 font-medium mt-1">API Latency</div>
+                                </div>
+                                <div className="p-4 bg-gray-800/30 rounded-xl border border-gray-800 flex flex-col justify-center hover:bg-gray-800/50 transition-colors">
+                                    <div className="text-blue-400 mb-2"><RefreshCw size={24} /></div>
+                                    <div className="text-2xl font-bold text-white">99.9%</div>
+                                    <div className="text-xs text-gray-500 font-medium mt-1">Uptime</div>
+                                </div>
+                                <div className="p-4 bg-gray-800/30 rounded-xl border border-gray-800 flex flex-col justify-center hover:bg-gray-800/50 transition-colors">
+                                    <div className="text-purple-400 mb-2"><Globe size={24} /></div>
+                                    <div className="text-2xl font-bold text-white">8/10</div>
+                                    <div className="text-xs text-gray-500 font-medium mt-1">Active Workers</div>
+                                </div>
+                                <div className="p-4 bg-gray-800/30 rounded-xl border border-gray-800 flex flex-col justify-center hover:bg-gray-800/50 transition-colors">
+                                    <div className="text-yellow-400 mb-2"><CheckCircle2 size={24} /></div>
+                                    <div className="text-2xl font-bold text-white">0.01%</div>
+                                    <div className="text-xs text-gray-500 font-medium mt-1">Error Rate</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 {/* Sidebar Cards */}
