@@ -1,6 +1,5 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { FileText, Zap, BarChart3, Search } from 'lucide-react';
+import { FileText, Zap, Search } from 'lucide-react';
 
 export default function ProductShowcase() {
     return (

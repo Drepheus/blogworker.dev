@@ -1,8 +1,6 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import {
-    Twitter, Linkedin, Github, LayoutGrid, FileText,
-    BarChart3, Settings, TrendingUp, Users, ArrowUpRight
+    Twitter, Linkedin, Github, ArrowUpRight
 } from 'lucide-react';
 
 export default function Footer() {

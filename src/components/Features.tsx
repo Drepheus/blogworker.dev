@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Globe, BarChart3, Zap, Layers, RefreshCw, PenTool } from 'lucide-react';
 
