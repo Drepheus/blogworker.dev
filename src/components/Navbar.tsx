@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-export default function Navbar() {
+interface NavbarProps {
+    onLoginClick: () => void;
+}
+
+export default function Navbar({ onLoginClick }: NavbarProps) {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
@@ -26,8 +30,8 @@ export default function Navbar() {
     return (
         <nav
             className={`fixed w-full z-50 transition-all duration-500 border-b ${scrolled
-                    ? 'bg-white/70 backdrop-blur-xl border-white/20 shadow-sm py-2'
-                    : 'bg-transparent border-transparent py-4'
+                ? 'bg-white/70 backdrop-blur-xl border-white/20 shadow-sm py-2'
+                : 'bg-transparent border-transparent py-4'
                 }`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -55,8 +59,16 @@ export default function Navbar() {
                     </div>
 
                     <div className="hidden md:flex items-center space-x-6">
-                        <button className="text-sm font-semibold text-gray-600 hover:text-gray-900 transition-colors">Log in</button>
-                        <button className="btn-primary !px-6 !py-2.5 text-sm shadow-brand-orange/20">
+                        <button
+                            onClick={onLoginClick}
+                            className="text-sm font-semibold text-gray-600 hover:text-gray-900 transition-colors"
+                        >
+                            Log in
+                        </button>
+                        <button
+                            onClick={onLoginClick}
+                            className="btn-primary !px-6 !py-2.5 text-sm shadow-brand-orange/20"
+                        >
                             Get Started
                         </button>
                     </div>
@@ -87,8 +99,8 @@ export default function Navbar() {
                                 </a>
                             ))}
                             <div className="pt-4 mt-4 border-t border-gray-100 flex flex-col gap-3">
-                                <button className="w-full text-center py-2.5 font-semibold text-gray-600 hover:text-gray-900">Log in</button>
-                                <button className="btn-primary w-full text-sm">
+                                <button onClick={onLoginClick} className="w-full text-center py-2.5 font-semibold text-gray-600 hover:text-gray-900">Log in</button>
+                                <button onClick={onLoginClick} className="btn-primary w-full text-sm">
                                     Get Started
                                 </button>
                             </div>

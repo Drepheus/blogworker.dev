@@ -67,7 +67,7 @@ export default function LiveFeed() {
                             viewport={{ once: true }}
                             className="text-4xl md:text-5xl font-bold mb-6 text-white"
                         >
-                            Watch the <span className="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">Engine Work</span>
+                            Watch the <span className="text-brand-orange">Engine Work</span>
                         </motion.h2>
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}

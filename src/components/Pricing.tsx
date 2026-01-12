@@ -70,7 +70,7 @@ export default function Pricing() {
                         viewport={{ once: true }}
                         className="text-3xl md:text-5xl font-bold text-white mb-6"
                     >
-                        Simple, <span className="bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">Transparent Pricing</span>
+                        Simple, <span className="text-brand-orange">Transparent Pricing</span>
                     </motion.h2>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}

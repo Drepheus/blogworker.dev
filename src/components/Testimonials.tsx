@@ -79,7 +79,7 @@ export default function Testimonials() {
                     viewport={{ once: true }}
                     className="text-3xl md:text-5xl font-bold text-gray-900 mb-4"
                 >
-                    Trusted by <span className="bg-gradient-to-r from-orange-500 to-pink-600 bg-clip-text text-transparent">SEO Pros</span>
+                    Trusted by <span className="text-brand-orange">SEO Pros</span>
                 </motion.h2>
                 <motion.p
                     initial={{ opacity: 0, y: 20 }}

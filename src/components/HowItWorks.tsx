@@ -52,7 +52,7 @@ export default function HowItWorks() {
                         transition={{ delay: 0.1 }}
                         className="text-4xl md:text-5xl font-bold text-white mt-4 mb-6"
                     >
-                        Launch Your <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Blog Empire</span> <br /> in 3 Steps
+                        Launch Your <span className="text-brand-orange">Blog Empire</span> <br /> in 3 Steps
                     </motion.h2>
                     <motion.p
                         initial={{ opacity: 0, y: 10 }}
