@@ -5,7 +5,7 @@ import { Check, X } from 'lucide-react';
 const plans = [
     {
         name: "Starter",
-        price: 49,
+        price: 29,
         description: "Perfect for testing the waters.",
         features: [
             "10 Premium Articles / mo",
@@ -19,7 +19,7 @@ const plans = [
     },
     {
         name: "Pro Scale",
-        price: 149,
+        price: 79,
         description: "For serious traffic growth.",
         features: [
             "100 Premium Articles / mo",
@@ -35,7 +35,7 @@ const plans = [
     },
     {
         name: "Agency",
-        price: 399,
+        price: 199,
         description: "Maximum power for multiple sites.",
         features: [
             "500 Premium Articles / mo",

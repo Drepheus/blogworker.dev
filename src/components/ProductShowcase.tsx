@@ -44,14 +44,21 @@ export default function ProductShowcase() {
 
                             {/* Sidebar */}
                             <div className="col-span-3 border-r border-gray-100 pr-6 space-y-4 hidden md:block">
-                                <div className="h-8 w-24 bg-gray-100 rounded-md mb-8"></div>
-                                <div className="space-y-2">
-                                    {[1, 2, 3, 4, 5].map(i => (
+                                <motion.div
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.5 }}
+                                    className="h-8 w-24 bg-gray-100 rounded-md mb-8"
+                                ></motion.div>
+                                <div className="space-y-3">
+                                    {[1, 2, 3, 4, 5].map((i) => (
                                         <motion.div
                                             key={i}
-                                            initial={{ width: "60%" }}
-                                            whileInView={{ width: ["60%", "80%", "60%"] }}
-                                            transition={{ duration: 2, repeat: Infinity, repeatType: "reverse", delay: i * 0.2 }}
+                                            initial={{ opacity: 0, x: -10 }}
+                                            whileInView={{ opacity: 1, x: 0 }}
+                                            viewport={{ once: true }}
+                                            transition={{ delay: i * 0.1, duration: 0.4 }}
                                             className="h-4 bg-gray-50 rounded w-full"
                                         />
                                     ))}
@@ -71,9 +78,15 @@ export default function ProductShowcase() {
                                             <div className="h-2 w-20 bg-gray-50 rounded"></div>
                                         </div>
                                     </div>
-                                    <div className="h-8 w-24 bg-brand-orange text-white text-xs font-bold rounded-lg flex items-center justify-center">
+                                    <motion.div
+                                        animate={{
+                                            boxShadow: ["0 0 0px rgba(255,159,67,0)", "0 0 10px rgba(255,159,67,0.5)", "0 0 0px rgba(255,159,67,0)"]
+                                        }}
+                                        transition={{ duration: 2, repeat: Infinity }}
+                                        className="h-8 px-4 bg-brand-orange text-white text-xs font-bold rounded-lg flex items-center justify-center"
+                                    >
                                         PUBLISHING
-                                    </div>
+                                    </motion.div>
                                 </div>
 
                                 {/* Animated Article Generation */}
@@ -88,53 +101,74 @@ export default function ProductShowcase() {
                                     ></motion.div>
 
                                     {/* Image Placeholder */}
-                                    <motion.div
-                                        initial={{ opacity: 0, scale: 0.9 }}
-                                        whileInView={{ opacity: 1, scale: 1 }}
-                                        viewport={{ once: true }}
-                                        transition={{ delay: 0.5, duration: 0.5 }}
-                                        className="h-48 w-full bg-gray-50 rounded-xl border border-gray-100 flex items-center justify-center"
-                                    >
-                                        <div className="text-gray-300">
-                                            <FileText size={48} />
-                                        </div>
-                                    </motion.div>
+                                    <div className="relative overflow-hidden rounded-xl border border-gray-100 h-64 bg-gray-50 group">
+                                        <motion.div
+                                            initial={{ opacity: 0 }}
+                                            whileInView={{ opacity: 1 }}
+                                            viewport={{ once: true }}
+                                            transition={{ delay: 0.5, duration: 1 }}
+                                            className="absolute inset-0 flex items-center justify-center text-gray-300"
+                                        >
+                                            <FileText size={48} className="drop-shadow-sm" />
+                                        </motion.div>
+                                        {/* Scanning effect */}
+                                        <motion.div
+                                            initial={{ top: "-100%" }}
+                                            whileInView={{ top: "200%" }}
+                                            viewport={{ once: true }}
+                                            transition={{ delay: 1, duration: 2, ease: "linear", repeat: Infinity, repeatDelay: 3 }}
+                                            className="absolute left-0 w-full h-1/2 bg-gradient-to-b from-transparent via-brand-orange/10 to-transparent"
+                                        />
+                                    </div>
 
-                                    {/* Text Lines */}
+                                    {/* Text Lines Simulated Typing */}
                                     <div className="space-y-3">
-                                        {[1, 2, 3, 4, 5, 6].map((line) => (
+                                        {[1, 2, 3, 4, 5, 6].map((line, index) => (
                                             <motion.div
                                                 key={line}
-                                                initial={{ width: 0, opacity: 0 }}
+                                                initial={{ width: 0, opacity: 0.5 }}
                                                 whileInView={{ width: "100%", opacity: 1 }}
                                                 viewport={{ once: true }}
-                                                transition={{ delay: 1 + (line * 0.1), duration: 0.5 }}
-                                                className="h-3 bg-gray-100 rounded"
+                                                transition={{
+                                                    delay: 1.5 + (line * 0.2),
+                                                    duration: 0.8,
+                                                    ease: "anticipate"
+                                                }}
+                                                className={`h-3 bg-gray-100 rounded ${index === 5 ? 'w-2/3' : ''}`}
                                             ></motion.div>
                                         ))}
                                     </div>
                                 </div>
 
-                                {/* Floating Floating Cards */}
+                                {/* Floating SEO Card */}
                                 <motion.div
-                                    initial={{ x: 50, opacity: 0 }}
-                                    whileInView={{ x: 0, opacity: 1 }}
-                                    transition={{ delay: 1.5 }}
-                                    className="absolute right-8 bottom-8 bg-white p-4 rounded-xl shadow-xl border border-gray-100 w-48 z-20"
+                                    initial={{ scale: 0.8, opacity: 0, y: 20 }}
+                                    whileInView={{ scale: 1, opacity: 1, y: 0 }}
+                                    transition={{ delay: 2.5, type: "spring", stiffness: 200 }}
+                                    className="absolute right-8 bottom-12 bg-gray-900 p-4 rounded-xl shadow-2xl border border-gray-700 w-56 z-20"
                                 >
-                                    <div className="flex items-center space-x-3 mb-2">
-                                        <Search size={16} className="text-blue-500" />
-                                        <span className="text-xs font-bold text-gray-700">SEO Score</span>
+                                    <div className="flex items-center justify-between mb-3">
+                                        <div className="flex items-center space-x-2">
+                                            <Search size={14} className="text-blue-400" />
+                                            <span className="text-xs font-bold text-white">SEO Score</span>
+                                        </div>
+                                        <motion.div
+                                            initial={{ opacity: 0 }}
+                                            whileInView={{ opacity: 1 }}
+                                            transition={{ delay: 3 }}
+                                            className="text-lg font-bold text-green-400"
+                                        >
+                                            98<span className="text-xs text-gray-500 font-normal">/100</span>
+                                        </motion.div>
                                     </div>
-                                    <div className="w-full bg-gray-100 rounded-full h-2 mb-1">
+                                    <div className="w-full bg-gray-800 rounded-full h-2">
                                         <motion.div
                                             initial={{ width: 0 }}
                                             whileInView={{ width: "98%" }}
-                                            transition={{ delay: 1.8, duration: 1 }}
-                                            className="bg-green-500 h-2 rounded-full"
+                                            transition={{ delay: 2.8, duration: 1.5, ease: "easeOut" }}
+                                            className="bg-green-500 h-2 rounded-full shadow-[0_0_10px_rgba(34,197,94,0.5)]"
                                         ></motion.div>
                                     </div>
-                                    <div className="text-right text-xs font-bold text-green-600">98/100</div>
                                 </motion.div>
 
                             </div>
